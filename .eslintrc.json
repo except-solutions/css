@@ -23,7 +23,8 @@
         "semi": ["error", "always"],
         "quotes": ["error", "single"],
         "max-len": ["error", 100],
-        "no-var": "error"
+        "no-var": "error",
+        "indent": ["error", 2]
     },
     "ignorePatterns": ["node_modules/", "mongo", "init-mongo.js"]
 }
