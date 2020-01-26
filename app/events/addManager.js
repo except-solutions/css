@@ -1,6 +1,6 @@
 const css = require('../../css');
 
-css.on('message', (msg) => {
-  const chatId = msg.chat.id;
+css.onText(/\/add_manager (.+)/, async msg => {
+  const chatId = msg.chatId;
   css.sendMessage(chatId, 'Received your message');
 });
