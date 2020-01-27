@@ -105,3 +105,5 @@ dist
 .history/*
 .vscode/*
 mongo/*
+
+.idea
