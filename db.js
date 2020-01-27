@@ -8,7 +8,8 @@ mongoose.connect(
     `${process.env.MONGO_PORT}/`,
     `${process.env.MONGO_SCHEMA}`,
   ].join(''),
-  {useNewUrlParser: true}
+  {useNewUrlParser: true, useUnifiedTopology: true}
 );
+mongoose.set('useCreateIndex', true);
 
 module.exports = mongoose;

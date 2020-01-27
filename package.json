@@ -20,11 +20,12 @@
     "eslint-plugin-node": "^11.0.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "https-proxy-agent": "^4.0.0",
     "jade": "~1.11.0",
     "jest": "^25.1.0",
     "mongoose": "^5.8.9",
     "morgan": "~1.9.1",
-    "node-telegram-bot-api": "^0.40.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "telegraf": "^3.36.0"
   }
 }
