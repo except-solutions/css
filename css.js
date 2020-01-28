@@ -6,4 +6,5 @@ const cssbot = new Telegraf(process.env.TELEGRAM_TOKEN, {
   }
 });
 cssbot.start(async (ctx) => await ctx.reply('Welcome!'));
+cssbot.launch();
 module.exports = cssbot;
