@@ -2,14 +2,11 @@ const mongoose = require('../../db');
 const telegramSchema = require('./telegram');
 
 module.exports = mongoose.model(
-  'Manager',
+  'Client',
   mongoose.Schema({
     ...telegramSchema,
     ...{
-      approved: {
-        type: Boolean,
-        default: false
-      },
+      companyName: String,
     }
   })
 );
