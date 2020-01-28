@@ -6,9 +6,9 @@ services:
     ports:
       - "27017:27017"
     environment:
-        - MONGO_INITDB_DATABASE=day-challenge
-        - MONGO_INITDB_ROOT_USERNAME=day-challenge
-        - MONGO_INITDB_ROOT_PASSWORD=day-challenge
+        - MONGO_INITDB_DATABASE=mongocss
+        - MONGO_INITDB_ROOT_USERNAME=mongocss
+        - MONGO_INITDB_ROOT_PASSWORD=mongocss
     volumes:
         - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
         - ./mongo:/data/db

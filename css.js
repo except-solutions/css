@@ -1,14 +1,10 @@
-const TelegramBot = require('node-telegram-bot-api');
-
-const css = new TelegramBot(
-  process.env.TELEGRAM_TOKEN, 
-  {
-    polling: true,
-    request: {
-      proxy: process.env.PROXY_URI,
-      strictSSL: false
-    }
+const Telegraf = require('telegraf');
+const HttpsProxyAgent = require('https-proxy-agent');
+const cssbot = new Telegraf(process.env.TELEGRAM_TOKEN, {
+  telegram: {
+    agent: new HttpsProxyAgent(process.env.PROXY_URI)
   }
-);
-
-module.exports = css;
+});
+cssbot.start(async (ctx) => await ctx.reply('Welcome!'));
+cssbot.launch();
+module.exports = cssbot;

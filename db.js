@@ -18,5 +18,5 @@ if (process.env.NODE_ENV !== 'test') {
     {useNewUrlParser: true}
   );
 }
-
+mongoose.set('useCreateIndex', true);
 module.exports = mongoose;

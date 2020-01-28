@@ -106,3 +106,5 @@ dist
 .vscode/*
 mongo/*
 mongo_test/*
+
+.idea

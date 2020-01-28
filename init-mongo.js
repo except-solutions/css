@@ -1,11 +1,11 @@
 db.createUser(
     {
-        user: "day-challenge",
-        pwd: "day-challenge",
+        user: "mongocss",
+        pwd: "mongocss",
         roles: [
             {
                 role: "readWrite",
-                db: "day-challenge"
+                db: "mongocss"
             }
         ]
     }
