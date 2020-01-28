@@ -1,0 +1,10 @@
+version: "3"
+services:
+  mongo:
+    container_name: css_mongo_test
+    image: mongo
+    ports:
+      - "27016:27017"
+    volumes:
+        - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+        - ./mongo_test:/data/db

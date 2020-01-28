@@ -105,5 +105,6 @@ dist
 .history/*
 .vscode/*
 mongo/*
+mongo_test/*
 
 .idea
