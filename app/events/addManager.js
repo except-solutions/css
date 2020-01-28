@@ -1,4 +1,4 @@
-const css = require('../../css');
+const css = require('../../bot');
 
 const managerHelper = require('../helpers/addManagerHelper');
 

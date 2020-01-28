@@ -25,8 +25,4 @@ app.use(function(err, req, res) {
   res.render('error');
 });
 
-
-// load telegram events
-require('./app/events/addManager');
-
 module.exports = app;

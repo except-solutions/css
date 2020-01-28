@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'test') {
       `${process.env.MONGO_PORT}/`,
       `${process.env.MONGO_SCHEMA}`,
     ].join(''),
-    {useNewUrlParser: true}
+    {useNewUrlParser: true, useUnifiedTopology: true}
   );
 } else {
   const mongoPort = process.env.TEST_MONGO_PORT ? process.env.TEST_MONGO_PORT : '27016';
