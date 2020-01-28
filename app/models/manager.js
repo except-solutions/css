@@ -1,6 +1,6 @@
 const mongoose = require('../../db');
 
-module.exports = new mongoose.model(
+module.exports = mongoose.model(
   'Manager',
   mongoose.Schema({
     telegramId: {

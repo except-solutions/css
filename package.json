@@ -11,7 +11,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "npx eslint .",
-    "test": "jest tests/*"
+    "test": "jest tests/* --detectOpenHandles --runInBand"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
