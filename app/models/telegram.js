@@ -1,9 +1,9 @@
 module.exports = {
   telegramId:{
-  type: Number,
+    type: Number,
     unique: true
-},
-username: String,
+  },
+  username: String,
   firstName: String,
   lastName: String,
 };
