@@ -9,7 +9,10 @@
     ]
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./bin/www & node ./bin/css.js",
+    "dev": "nodemon ./bin/www & nodemon bin/css.js",
+    "bot-dev": "nodemon bin/css.js",
+    "www-dev": "nodemon ./bin/www",
     "lint": "npx eslint .",
     "test": "jest tests/* --detectOpenHandles --runInBand"
   },
@@ -27,5 +30,8 @@
     "morgan": "~1.9.1",
     "supertest": "^4.0.2",
     "telegraf": "^3.36.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
