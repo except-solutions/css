@@ -35,6 +35,7 @@
     "https-proxy-agent": "^4.0.0",
     "jade": "~1.11.0",
     "jest": "^25.1.0",
+    "lodash": "^4.17.15",
     "mongoose": "^5.8.9",
     "morgan": "~1.9.1",
     "socks5-https-client": "^1.2.1",
