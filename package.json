@@ -37,6 +37,7 @@
     "jest": "^25.1.0",
     "mongoose": "^5.8.9",
     "morgan": "~1.9.1",
+    "socks5-https-client": "^1.2.1",
     "supertest": "^4.0.2",
     "telegraf": "^3.36.0"
   },

@@ -107,4 +107,8 @@ dist
 mongo/*
 mongo_test/*
 
+# IDEAs files:
 .idea
+
+# Admins static files:
+.adminbro
