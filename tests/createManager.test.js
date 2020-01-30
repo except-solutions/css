@@ -1,27 +1,24 @@
 const mongoose = require('mongoose');
-const addManagerHelper = require('../app/helpers/addManagerHelper');
-const Manager = require('../app/models/manager');
+const addManagerGroupHelper = require('../app/helpers/addManagerGroupHelper');
 
-describe('Test manager creation', () => {
+describe('Test add group chat', () => {
 
   afterAll(async () => {
     await mongoose.connection.db.dropDatabase();
     mongoose.connection.close();
   });
 
-  it('Manager must success create', async () => {
+  it('Group must success created', async () => {
 
-    const managerMock = {
-      id: 12321312,
-      first_name: 'firstName',
-      last_name: 'lastName',
-      username: 'username'
+    const chatData = {
+      id: 123123,
+      title: 'test title'
     };
 
-    const createResult = await addManagerHelper.createMananger(managerMock);
-    const isManager = await Manager.exists({telegramId: managerMock.id});
+    const result = await addManagerGroupHelper.addGroup(chatData);
+    const group = result.group;
 
-    expect(createResult.success).toBe(true);
-    expect(isManager).toBe(true);
+    expect(group.title).toBe(chatData.title);
+    expect(group.chatId).toBe(chatData.id);
   });
 });
