@@ -4,7 +4,7 @@ const SocksAgent = require('socks5-https-client/lib/Agent');
 
 module.exports = () => {
   if (process.env.PROXY_URI.startsWith('http')) {
-    return new HttpsProxyAgent(process.env.PROXY_URI)
+    return new HttpsProxyAgent(process.env.PROXY_URI);
   } else {
     return new SocksAgent({
       // Must be defined:
