@@ -12,5 +12,6 @@ cssbot.use(authMiddlewares.commandAuthMiddleware);
 require('../app/events/addManager');
 require('../app/events/addClient');
 require('../app/events/registerGroup');
+require('../app/events/startKeyboard');
 
 cssbot.launch();
