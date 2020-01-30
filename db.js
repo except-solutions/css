@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'test') {
   const mongoPort = process.env.TEST_MONGO_PORT ? process.env.TEST_MONGO_PORT : '27016';
   mongoose.connect(
     `mongodb://127.0.0.1:${mongoPort}/test`,
-    {useNewUrlParser: true}
+    {useNewUrlParser: true},
   );
 }
 mongoose.set('useCreateIndex', true);
