@@ -13,7 +13,5 @@ css.start(async ctx => {
   keyboard.add('123: 321');
   ctx.reply('Keyboard', keyboard.draw());
 
-  startHelper.createClientIfNotExist(ctx);
-
-
+  startHelper.createClientIfNotExist(ctx.chat);
 });

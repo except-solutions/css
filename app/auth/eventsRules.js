@@ -41,6 +41,6 @@ module.exports = {
       return rulesTypes[_.first(rulesKeys)];
     }
 
-    throw Error(`Not found rule for given message ${message.text}`);
+    throw Error(`Not found rule for given message ${message}`);
   }
 };

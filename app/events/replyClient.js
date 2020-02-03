@@ -1,13 +1,16 @@
 const css = require('../../bot');
-// const Group = require('../models/group');
-const Client = require('../models/client');
 const eventsRules = require('../auth/eventsRules');
-
+const Client = require('../models/client');
+const replyHelper = require('../helpers/replyClientHelper');
 
 css.command(eventsRules.commands.replyClient.value, async context => {
-  const username = context.state.command.splitArgs[0].slice(1);
-  const text = context.state.command.splitArgs.slice(1).join(' ')
-  const client = await Client.findOne({username: username});
 
-  context.telegram.sendMessage(client.telegramId, `Reply from manager: ${text}`);
+  const [username, message] = replyHelper.prepareReplyData(context.state.command);
+
+  if (!await replyHelper.clientExist({username: username})) {
+    context.reply(`Client with username ${username} does not exist`);
+  } else {
+    const client = await Client.findOne({username: username});
+    context.telegram.sendMessage(client.telegramId, `Reply from manager: ${message}`);
+  }
 });

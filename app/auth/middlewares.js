@@ -3,7 +3,7 @@ const eventsRules = require('./eventsRules');
 
 module.exports = {
   async messageTypeMiddleware(context, next) {
-    if (context.message.text) {
+    if (context.message && context.message.text) {
       if (context.message.text.startsWith('/')) {
         context.messageType = 'commands';
       } else {
@@ -30,11 +30,17 @@ module.exports = {
       return null;
     }
 
-    const hasPerm = eventsRules.hasPermission(
-      context.messageType,
-      context.state.command.command,
-      context.user
-    );
+    let hasPerm;
+
+    try {
+      hasPerm = eventsRules.hasPermission(
+        context.messageType,
+        context.state.command.command,
+        context.user
+      );
+    } catch (error) {
+      context.reply(error.message);
+    }
 
     if (hasPerm) {
       await next();
