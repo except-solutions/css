@@ -9,6 +9,14 @@ module.exports = {
     registerGroup: {
       value: 'its_manager_group',
       permissions: ['manager']
+    },
+    replyClient: {
+      value: 'reply',
+      permissions: ['all']
+    },
+    start: {
+      value: 'start',
+      permissions: ['all']
     }
   },
   hasPermission(type, message, user) {
@@ -28,10 +36,11 @@ module.exports = {
     const rulesTypes = this[type];
     const rulesKeys = Object.keys(rulesTypes)
       .filter(key => rulesTypes[key].value === message);
-    if (rulesKeys) {
+ 
+    if (!_.isEmpty(rulesKeys)) {
       return rulesTypes[_.first(rulesKeys)];
     }
 
-    throw Error(`Not found rule for given message ${message}`);
+    throw Error(`Not found rule for given message ${message.text}`);
   }
 };

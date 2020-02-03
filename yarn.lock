@@ -6265,6 +6265,13 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
+telegraf-command-parts@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/telegraf-command-parts/-/telegraf-command-parts-1.0.3.tgz#d0e078d10ce3f68469b529e5ea3a76e42d5788b3"
+  integrity sha1-0OB40Qzj9oRptSnl6jp25C1XiLM=
+  dependencies:
+    telegraf "^3.1.0"
+
 telegraf-keyboard@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/telegraf-keyboard/-/telegraf-keyboard-1.1.2.tgz#445c1efd51bfcd09a6a816e1b4c6c8255cce60c2"
@@ -6272,7 +6279,7 @@ telegraf-keyboard@^1.1.2:
   dependencies:
     telegraf "^3.29.0"
 
-telegraf@^3.29.0, telegraf@^3.36.0:
+telegraf@^3.1.0, telegraf@^3.29.0, telegraf@^3.36.0:
   version "3.36.0"
   resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-3.36.0.tgz#eab1160159df6033d3cb92ac990902523277822a"
   integrity sha512-9o6AJKRiTm5vMWYI6WpTfBHzu4FMpWBNKxvnMxRds/cbMY9RnsVVjdi8i4bFFlfd+xbi73EbrnI3dybayryICA==
