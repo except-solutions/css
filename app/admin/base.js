@@ -1,11 +1,12 @@
 const ManagerSchema = require('../models/manager');
 const ClientSchema = require('../models/client');
-const GroupSchema = require('../models/group');
 const AdminBro = require('admin-bro');
 const AdminBroExpress = require('admin-bro-expressjs');
 const AdminBroMongoose = require('admin-bro-mongoose');
+const Group = require('../models/group');
 
 AdminBro.registerAdapter(AdminBroMongoose);
+
 const adminBro = new AdminBro({
   rootPath: '/admin',
   resources: [
@@ -16,8 +17,8 @@ const adminBro = new AdminBro({
       resource: ClientSchema,
     },
     {
-      resource: GroupSchema,
-    },
+      resource: Group
+    }
   ],
 });
 

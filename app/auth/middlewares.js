@@ -3,10 +3,12 @@ const eventsRules = require('./eventsRules');
 
 module.exports = {
   async messageTypeMiddleware(context, next) {
-    if (context.message.text.startsWith('/')) {
-      context.messageType = 'commands';
-    } else {
-      context.messageType = 'text';
+    if (context.message && context.message.text) {
+      if (context.message.text.startsWith('/')) {
+        context.messageType = 'commands';
+      } else {
+        context.messageType = 'regularMessage';
+      }
     }
     await next();
   },
@@ -16,18 +18,31 @@ module.exports = {
 
     if (await Manager.exists({telegramId: context.from.id})) {
       context.user = await Manager.findOne({telegramId: context.from.id});
+      context.auth = true;
     }
 
     await next();
   },
   async commandAuthMiddleware(context, next) {
 
-    if (context.messageType !== 'command') {
+    if (context.messageType !== 'commands') {
       await next();
       return null;
     }
 
-    if (eventsRules.hasPermission(context.messageType, context.message, context.message)) {
+    let hasPerm;
+
+    try {
+      hasPerm = eventsRules.hasPermission(
+        context.messageType,
+        context.state.command.command,
+        context.user
+      );
+    } catch (error) {
+      context.reply(error.message);
+    }
+
+    if (hasPerm) {
       await next();
       return null;
     }
