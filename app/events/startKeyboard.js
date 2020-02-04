@@ -1,17 +1,9 @@
 const css = require('../../bot'),
-  Keyboard = require('telegraf-keyboard');
-const startHelper = require('../helpers/startHelper');
-
-const StartKeyboardOptions = {
-  inline: false, // defaultaa
-  duplicates: false, // default
-  newline: true, // default
-};
+  startHelper = require('../helpers/startHelper'),
+  keyboard = require('../keyboards/startKeyboard');
 
 css.start(async ctx => {
-  const keyboard = new Keyboard(StartKeyboardOptions);
-  keyboard.add('123: 321');
-  ctx.reply('Keyboard', keyboard.draw());
+  await ctx.reply(ctx.i18n.t('greeting'), keyboard(ctx));
 
-  startHelper.createClientIfNotExist(ctx.chat);
+  await startHelper.createClientIfNotExist(ctx.chat);
 });

@@ -1,6 +1,5 @@
 const Manager = require('../models/manager');
 const eventsRules = require('./eventsRules');
-
 module.exports = {
   async messageTypeMiddleware(context, next) {
     if (context.message && context.message.text) {
