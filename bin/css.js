@@ -17,7 +17,7 @@ cssbot.use((...args) => session.middleware(...args));
 cssbot.use(commandParts());
 cssbot.use(authMiddlewares.messageTypeMiddleware);
 cssbot.use(authMiddlewares.userAuthenticationMiddleware);
-cssbot.use(authMiddlewares.commandAuthMiddleware);
+cssbot.use(authMiddlewares.typeAuthMiddleware);
 cssbot.use(Telegraf.log());
 
 // Add telegram events:

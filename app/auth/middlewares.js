@@ -22,7 +22,7 @@ module.exports = {
 
     await next();
   },
-  async commandAuthMiddleware(ctx, next) {
+  async typeAuthMiddleware(ctx, next) {
 
     let hasPerm;
     let msgType;
