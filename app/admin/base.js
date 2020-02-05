@@ -18,7 +18,7 @@ const adminBro = new AdminBro({
     },
     {
       resource: Group
-    }
+    },
   ],
 });
 

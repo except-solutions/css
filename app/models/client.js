@@ -3,11 +3,10 @@ const mongoose = require('../../db'),
 require('mongoose-type-email');
 
 const profileSchema = mongoose.Schema({
-  surname:String,
   name: String,
-  patronymic:String,
   companyName: String,
-  email: mongoose.SchemaTypes.Email
+  email: mongoose.SchemaTypes.Email,
+  description: String
 });
 
 module.exports = mongoose.model(

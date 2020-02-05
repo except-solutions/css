@@ -1,4 +1,5 @@
 const _ = require('lodash'),
+  translateEventsArray = require('./utils'),
   i18n = require('../locales');
 
 module.exports = {
@@ -15,14 +16,22 @@ module.exports = {
       value: ['reply'],
       permissions: ['all']
     },
-    clientFillProfile: {
-      value: Object
-        .keys(i18n.repository)
-        .map(Key => i18n.repository[Key].startKeyboardFirstButton()),
-      permissions: ['all']
-    },
     start: {
       value: ['start'],
+      permissions: ['all']
+    }
+  },
+  regularMessage: {
+    userReplyEvent: {
+      value: ['reply'],
+      permissions: ['all']
+    },
+    clientFillProfile: {
+      value: translateEventsArray(i18n, 'FillProfileButton'),
+      permissions: ['all']
+    },
+    clientCancelFillProfile: {
+      value: translateEventsArray(i18n, 'CancelFillProfile'),
       permissions: ['all']
     }
   },
@@ -48,8 +57,8 @@ module.exports = {
  
     if (!_.isEmpty(rulesKeys)) {
       return _.first(rulesKeys);
+    } else {
+      return this.regularMessage.userReplyEvent;
     }
-
-    throw Error(`Not found rule for given message ${message}`);
   }
 };

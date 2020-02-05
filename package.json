@@ -44,7 +44,8 @@
     "telegraf": "^3.36.0",
     "telegraf-command-parts": "^1.0.3",
     "telegraf-i18n": "^6.6.0",
-    "telegraf-keyboard": "^1.1.2"
+    "telegraf-keyboard": "^1.1.2",
+    "telegraf-session-mongodb": "^1.2.1"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

@@ -1,2 +1,25 @@
-greeting: Hello!
-startKeyboardFirstButton: Fill_out_a_customer_profile
+greeting: "Welcome home!"
+
+# Start Client Keyboard:
+FillProfileButton: "Fill client profile 📑"
+
+# Reply To FillProfileButton
+ReplyToFillProfileText: "
+Dear customer, send a message of the form: \n
+\n
+Name \n
+Company \n
+Email \n
+Description \n
+\n
+Line breaks between points are required! \n
+Filling example: \n
+\n
+John Jack Smith \n
+My company name \n
+JohnSmith@domen.zo \n
+The company 'My Company Name' has been around for a long time.
+"
+SuccessFillProfile: 'You have successfully completed your profile!'
+FailedFillProfile: 'Error! Perhaps you did not fill out one of the fields or filled it incorrectly!'
+CancelFillProfile: "Back ❌"

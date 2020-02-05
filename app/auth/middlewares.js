@@ -1,44 +1,44 @@
 const Manager = require('../models/manager');
 const eventsRules = require('./eventsRules');
 module.exports = {
-  async messageTypeMiddleware(context, next) {
-    if (context.message && context.message.text) {
-      if (context.message.text.startsWith('/')) {
-        context.messageType = 'commands';
+  async messageTypeMiddleware(ctx, next) {
+    if (ctx.message && ctx.message.text) {
+      if (ctx.message.text.startsWith('/')) {
+        ctx.messageType = 'commands';
       } else {
-        context.messageType = 'regularMessage';
+        ctx.messageType = 'regularMessage';
       }
     }
     await next();
   },
-  async userAuthenticationMiddleware(context, next) {
+  async userAuthenticationMiddleware(ctx, next) {
 
-    context.auth = false;
+    ctx.auth = false;
 
-    if (await Manager.exists({telegramId: context.from.id})) {
-      context.user = await Manager.findOne({telegramId: context.from.id});
-      context.auth = true;
+    if (await Manager.exists({telegramId: ctx.from.id})) {
+      ctx.user = await Manager.findOne({telegramId: ctx.from.id});
+      ctx.auth = true;
     }
 
     await next();
   },
-  async commandAuthMiddleware(context, next) {
-
-    if (context.messageType !== 'commands') {
-      await next();
-      return null;
-    }
+  async commandAuthMiddleware(ctx, next) {
 
     let hasPerm;
-
+    let msgType;
+    if (ctx.messageType === 'commands') {
+      msgType = ctx.state.command.command;
+    } else {
+      msgType = ctx.update.message.text;
+    }
     try {
       hasPerm = eventsRules.hasPermission(
-        context.messageType,
-        context.state.command.command,
-        context.user
+        ctx.messageType,
+        msgType,
+        ctx.user
       );
     } catch (error) {
-      context.reply(error.message);
+      ctx.reply(error.message);
     }
 
     if (hasPerm) {
@@ -46,6 +46,6 @@ module.exports = {
       return null;
     }
 
-    context.reply('You don\'t have privileges for this command');
+    ctx.reply('You don\'t have privileges for this command');
   }
 };
