@@ -2,6 +2,13 @@ greeting: "Welcome home!"
 
 # Start Client Keyboard:
 FillProfileButton: "Fill client profile 📑"
+GoToDialogFromManagersGroup: "Go to dialogue with managerial staff 📢"
+
+# Dialog with managers-staff:
+WarningClientAboutForwardingMsg: "
+You are in a state of dialogue with the managerial staff. \n
+Keep in mind all your further messages are forwarded.
+"
 
 # Reply To FillProfileButton
 ReplyToFillProfileText: "
