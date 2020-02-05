@@ -1,6 +1,6 @@
 const css = require('../../bot'),
   eventsRules = require('../auth/eventsRules'),
-  cancelKeyboard = require('../keyboards/clientCancelFillProfileKeyboard'),
+  cancelKeyboard = require('../keyboards/clientGoToMainKeyboard'),
   startKeyboard = require('../keyboards/startKeyboard'),
   clientFillProfileHelper = require('../helpers/clientFillProfileHelper');
 
@@ -8,12 +8,6 @@ const css = require('../../bot'),
 css.hears(eventsRules.regularMessage.clientFillProfile.value, async ctx => {
   ctx.session.fillProfile = true;
   return  ctx.reply(ctx.i18n.t('ReplyToFillProfileText'), cancelKeyboard(ctx));
-});
-
-// Cancel fill profile
-css.hears(eventsRules.regularMessage.clientCancelFillProfile.value, async ctx => {
-  ctx.session.fillProfile = false;
-  return  ctx.reply(ctx.i18n.t('greeting'), startKeyboard(ctx));
 });
 
 // Filling profile

@@ -2,7 +2,7 @@ greeting: "Добро пожаловать выберите дальнейшее
 
 # Start Client Keyboard:
 FillProfileButton: "Заполнить анкету клиента 📑"
-GoToDialogFromManagersGroup: "Перейти к диалогу с менеджерским составом 📢"
+GoToDialogueWithManagersGroup: "Перейти к диалогу с менеджерским составом 📢"
 
 # Dialog with managers-staff:
 WarningClientAboutForwardingMsg: "

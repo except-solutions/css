@@ -27,6 +27,7 @@ require('../app/events/addClient');
 require('../app/events/registerGroup');
 require('../app/events/startKeyboard');
 require('../app/events/clientFillProfile');
+require('../app/events/goToDialogueWithStaff');
 require('../app/events/replyClient');
 require('../app/events/clientSendMessage');
 

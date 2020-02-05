@@ -22,16 +22,23 @@ module.exports = {
     }
   },
   regularMessage: {
+    // Special Event:
     userReplyEvent: {
       value: ['reply'],
       permissions: ['all']
     },
+    // FillProfile Events:
     clientFillProfile: {
       value: translateEventsArray(i18n, 'FillProfileButton'),
       permissions: ['all']
     },
     clientCancelFillProfile: {
       value: translateEventsArray(i18n, 'CancelFillProfile'),
+      permissions: ['all']
+    },
+    // Dialog Events:
+    GoToDialogueWithManagersGroup: {
+      value: translateEventsArray(i18n, 'GoToDialogueWithManagersGroup'),
       permissions: ['all']
     }
   },
