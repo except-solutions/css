@@ -1,0 +1,21 @@
+{
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "env" : {
+    "browser" : true,
+    "es6" : true
+  },
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "max-len": ["error", 100],
+    "no-var": "error",
+    "indent": ["error", 2]
+  },
+  "ignorePatterns": []
+}
