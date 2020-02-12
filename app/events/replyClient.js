@@ -26,19 +26,20 @@ css.command(eventsRules.commands.replyClient.value, async ctx => {
   }
 });
 
-css.on('message', async (ctx, next) => {
-  if (ctx.session.dailogueWithCient && !eventsRules.isSpecialMessage(ctx.message)) {
-    ctx.telegram.sendCopy(ctx.session.dailogueWithCient.chatId, ctx.message);
-  }
-  next();
-});
 
-css.hears(eventsRules.regularMessage.EndMessaging.value, async ctx => {
-  const keyboard = new Keyboard();
+css.hears(eventsRules.regularMessage.EndMessaging.value, async (ctx, next) => {
   const endMessagingNotice = replyHelper.prepareEndMessagingNotice(
     ctx,
     ctx.session.dailogueWithCient.clientUsername
   );
   ctx.session.dailogueWithCient = false;
-  return ctx.reply(endMessagingNotice, keyboard.clear());
+  ctx.reply(endMessagingNotice, (new Keyboard()).clear());
+  next();
+});
+
+css.on('message', async (ctx, next) => {
+  if (ctx.session.dailogueWithCient && !eventsRules.isSpecialMessage(ctx.message)) {
+    ctx.telegram.sendCopy(ctx.session.dailogueWithCient.chatId, ctx.message);
+  }
+  next();
 });

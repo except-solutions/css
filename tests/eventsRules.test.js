@@ -12,12 +12,12 @@ describe('Test events auth map', () => {
   });
 
   it('Must find key', () => {
-    expect(eventsAuthMap.isSpecialMessage('End messaging with client ❌'))
+    expect(eventsAuthMap.isSpecialMessage({text: 'End messaging with client ❌'}))
       .toBe(true);
   });
 
   it('Must not find key', () => {
-    expect(eventsAuthMap.isSpecialMessage('Not founded'))
+    expect(eventsAuthMap.isSpecialMessage({text: 'Not founded'}))
       .toBe(false);
   });
 });
