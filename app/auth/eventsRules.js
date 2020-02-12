@@ -40,6 +40,10 @@ module.exports = {
     GoToDialogueWithManagersGroup: {
       value: translateEventsArray(i18n, 'GoToDialogueWithManagersGroup'),
       permissions: ['all']
+    },
+    EndMessaging: {
+      value: translateEventsArray(i18n, 'EndMessaging'),
+      permissions: ['manager']
     }
   },
   hasPermission(type, message, user) {
@@ -67,5 +71,12 @@ module.exports = {
     } else {
       return this.regularMessage.userReplyEvent;
     }
+  },
+  isSpecialMessage(message) {
+    return !_.isEmpty(Object.keys(this.regularMessage)
+      .filter(key => {
+        return this.regularMessage[key].value.includes(message.text);
+      })
+    );
   }
 };

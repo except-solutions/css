@@ -10,4 +10,14 @@ describe('Test events auth map', () => {
     expect(eventsAuthMap.hasPermission('commands', 'its_manager_group', {getType: () => 'manager'}))
       .toBe(true);
   });
+
+  it('Must find key', () => {
+    expect(eventsAuthMap.isSpecialMessage({text: 'End messaging with client ❌'}))
+      .toBe(true);
+  });
+
+  it('Must not find key', () => {
+    expect(eventsAuthMap.isSpecialMessage({text: 'Not founded'}))
+      .toBe(false);
+  });
 });
