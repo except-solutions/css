@@ -17,6 +17,6 @@ app.use('/admin',require('./app/admin/base'));
 app.get('/', async (req, res) => {
   await res.send('Fucking Hostile');
 });
-//
+
 
 module.exports = app;
