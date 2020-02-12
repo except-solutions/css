@@ -32,3 +32,6 @@ FailedFillProfile: 'Ошибка! Возможно вы не заполнили 
 CancelFillProfile: "Назад ❌"
 
 MessagesFromUsername: "Сообщение от: "
+EndMessaging: "Прекратить диалог ❌"
+StartMessagingWithClient: "Менеджер @${from.username} начала диалог с клиентом: "
+EndDialogNotice: "Менеджер @${from.username} закончил диалог с клиентом: "

@@ -3,16 +3,11 @@ const Telegraf = require('telegraf'),
   i18n = require('../app/locales'),
   commandParts = require('telegraf-command-parts'),
   authMiddlewares = require('../app/auth/middlewares'),
-  TelegrafMongoSession = require('telegraf-session-mongodb'),
-  mongoClient = require('../db'),
-  session = new TelegrafMongoSession.TelegrafMongoSession(mongoClient.connection, {
-    collectionName: 'sessions',
-    sessionName: 'session'
-  });
+  session = require('telegraf/session');
 
 // Add middlewares:
 cssbot.use(i18n.middleware());
-cssbot.use((...args) => session.middleware(...args));
+cssbot.use(session());
 cssbot.use(commandParts());
 cssbot.use(authMiddlewares.messageTypeMiddleware);
 cssbot.use(authMiddlewares.userAuthenticationMiddleware);
