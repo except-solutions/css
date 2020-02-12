@@ -8,6 +8,8 @@ module.exports = {
       } else {
         ctx.messageType = 'regularMessage';
       }
+    } else {
+      ctx.messageType = 'regularMessage';
     }
     await next();
   },

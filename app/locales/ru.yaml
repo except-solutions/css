@@ -30,3 +30,5 @@ ivanovIvan@iv.ru \n
 SuccessFillProfile: 'Вы успешно заполнили свою анкету!'
 FailedFillProfile: 'Ошибка! Возможно вы не заполнили одно из полей или заполнили некорректно!'
 CancelFillProfile: "Назад ❌"
+
+MessagesFromUsername: "Сообщение от: "

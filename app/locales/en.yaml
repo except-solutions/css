@@ -30,3 +30,5 @@ The company 'My Company Name' has been around for a long time.
 SuccessFillProfile: 'You have successfully completed your profile!'
 FailedFillProfile: 'Error! Perhaps you did not fill out one of the fields or filled it incorrectly!'
 CancelFillProfile: "Back ❌"
+
+MessagesFromUsername: 'Messages from: '

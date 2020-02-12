@@ -11,6 +11,6 @@ css.command(eventsRules.commands.replyClient.value, async context => {
     context.reply(`Client with username ${username} does not exist`);
   } else {
     const client = await Client.findOne({username: username});
-    context.telegram.sendMessage(client.telegramId, `Reply from manager: ${message}`);
+    await context.telegram.sendMessage(client.telegramId, `Reply from manager: ${message}`);
   }
 });

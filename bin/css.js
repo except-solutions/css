@@ -12,7 +12,6 @@ const Telegraf = require('telegraf'),
 
 // Add middlewares:
 cssbot.use(i18n.middleware());
-// cssbot.use(session.middleware());
 cssbot.use((...args) => session.middleware(...args));
 cssbot.use(commandParts());
 cssbot.use(authMiddlewares.messageTypeMiddleware);

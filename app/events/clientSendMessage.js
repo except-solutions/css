@@ -15,8 +15,10 @@ css.on('message', async (ctx) => {
   }
 
   const managersGroup = await Group.getManagerGroup();
-  await ctx.telegram.sendMessage(
+  const replyText = `${ctx.i18n.t('MessagesFromUsername')}${ctx.message.from.username}`;
+  await ctx.telegram.sendMessage(managersGroup.chatId, replyText);
+  await ctx.telegram.sendCopy(
     managersGroup.chatId,
-    `Message from @${ctx.message.from.username}: ${ctx.message.text}`
+    ctx.message,
   );
 });
