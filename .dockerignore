@@ -1,0 +1,6 @@
+/mongo
+/mongo_test
+/mongo_production
+/.vscode
+/.idea
+/node_modules

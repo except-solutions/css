@@ -15,7 +15,6 @@ cssbot.use(authMiddlewares.typeAuthMiddleware);
 cssbot.use(Telegraf.log());
 
 // Add telegram events:
-
 require('../app/events/addManager');
 require('../app/events/addClient');
 require('../app/events/registerGroup');

@@ -15,7 +15,7 @@ app.use('/admin',require('./app/admin/base'));
 
 // For test
 app.get('/', async (req, res) => {
-  await res.send('Fucking Hostile');
+  await res.send('Hello world');
 });
 
 
