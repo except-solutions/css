@@ -1,0 +1,51 @@
+version: "3.3"
+services:
+  web:
+    container_name: css_web
+    build:
+      context: ../
+      dockerfile: ./deploy/web/Dockerfile
+    environment:
+      - MONGO_USERNAME=mongocss
+      - MONGO_PASSWORD=mongocss
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - MONGO_SCHEMA=mongocss
+    ports:
+      - 80:3000
+    links:
+      - mongo
+    depends_on:
+      - mongo
+      - bot
+    volumes:
+      - ../:/app
+  bot:
+    container_name: css_bot
+    build:
+      context: ../
+      dockerfile: ./deploy/bot/Dockerfile
+    environment:
+      - MONGO_USERNAME=mongocss
+      - MONGO_PASSWORD=mongocss
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - MONGO_SCHEMA=mongocss
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    volumes:
+    - ../:/app
+  mongo:
+    container_name: css_mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=mongocss
+      - MONGO_INITDB_ROOT_USERNAME=mongocss
+      - MONGO_INITDB_ROOT_PASSWORD=mongocss
+    volumes:
+      - ../init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ../mongo_production:/data/db

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 if (process.env.NODE_ENV !== 'test') {
+
   mongoose.connect(
     [
       `mongodb://${process.env.MONGO_USERNAME}:`,
