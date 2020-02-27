@@ -10,11 +10,13 @@ module.exports = {
     },
     registerGroup: {
       value: ['its_manager_group'],
-      permissions: ['manager']
+      permissions: ['manager'],
+      approve: true
     },
     replyClient: {
       value: ['reply'],
-      permissions: ['all']
+      permissions: ['manager'],
+      approve: true
     },
     start: {
       value: ['start'],
@@ -54,6 +56,9 @@ module.exports = {
     }
 
     if (_.includes(rule.permissions, user.getType())) {
+      if (_.has(rule, 'approve')) {
+        return Boolean(user.approved);
+      }
       return true;
     }
 

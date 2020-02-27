@@ -1,7 +1,7 @@
 version: "3"
 services:
   mongo:
-    container_name: css
+    container_name: local_css_mongo
     image: mongo
     ports:
       - "27017:27017"
@@ -12,3 +12,11 @@ services:
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - ./mongo:/data/db
+  redis:
+    container_name: local_css_redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis_data:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf

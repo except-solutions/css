@@ -2,12 +2,21 @@ const Telegraf = require('telegraf'),
   cssbot = require('../bot'),
   i18n = require('../app/locales'),
   commandParts = require('telegraf-command-parts'),
-  authMiddlewares = require('../app/auth/middlewares'),
-  session = require('telegraf/session');
+  authMiddlewares = require('../app/auth/middlewares');
 
+const RedisSession = require('telegraf-session-redis');
+const session = new RedisSession({
+  store: {
+    host: process.env.TELEGRAM_SESSION_HOST || '127.0.0.1',
+    port: process.env.TELEGRAM_SESSION_PORT || 6379
+  },
+  property: 'session'
+});
+
+cssbot.use(session);
 // Add middlewares:
 cssbot.use(i18n.middleware());
-cssbot.use(session());
+// cssbot.use(session());
 cssbot.use(commandParts());
 cssbot.use(authMiddlewares.messageTypeMiddleware);
 cssbot.use(authMiddlewares.userAuthenticationMiddleware);
@@ -24,5 +33,10 @@ require('../app/events/goToDialogueWithStaff');
 require('../app/events/replyClient');
 require('../app/events/clientSendMessage');
 
+cssbot.catch((err, ctx) => {
+  console.log(`Ooops, encountered an error for ${ctx.updateType}`, err);
+});
+
 // Bot launched:
+
 cssbot.launch();
