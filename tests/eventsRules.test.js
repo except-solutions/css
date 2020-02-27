@@ -7,8 +7,12 @@ describe('Test events auth map', () => {
   });
 
   it('Must check permission', () => {
-    expect(eventsAuthMap.hasPermission('commands', 'its_manager_group', {getType: () => 'manager'}))
-      .toBe(true);
+    expect(eventsAuthMap.hasPermission(
+      'commands',
+      'its_manager_group',
+      {getType: () => 'manager', approved: true}
+    )
+    ).toBe(true);
   });
 
   it('Must find key', () => {

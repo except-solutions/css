@@ -1,12 +1,15 @@
 const Manager = require('../models/manager');
 
 module.exports = {
-  async createMananger(managerData) {
+  async createMananger(managerData, i18n) {
 
-    const result = await Manager.exists({telegramId: managerData.id});
+    const manager = await Manager.findOne({telegramId: managerData.id});
 
-    if (result) {
-      return {success: false, message: 'Your already requested registration.'};
+    if (manager) {
+      if (manager.approved) {
+        return {success: false, message: i18n.t('AlreadyRegistered')};
+      }
+      return {success: false, message: i18n.t('AlreadyRequestReg')};
     }
 
     const newManager = await Manager.create(
@@ -21,15 +24,13 @@ module.exports = {
     if (newManager) {
       return {
         success: true,
-        message: `
-        Your request is accepted. When your request is approved you will recive notification
-        `
+        message: i18n.t('ManagerRegAccepted')
       };
     }
 
     return {
       success: false,
-      message: 'Something went wrong, manager was not created.'
+      message: i18n.t('ManagerCreateError')
     };
   }
 };

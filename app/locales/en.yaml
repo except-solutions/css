@@ -35,3 +35,8 @@ MessagesFromUsername: 'Messages from: '
 EndMessaging: "End messaging with client ❌"
 StartMessagingWithClient: "Manager @${from.username} start messaging with client: "
 EndDialogNotice: "Manager @${from.username} end messaging with client: "
+NotPrevelegies: "You don't have privileges for this command"
+AlreadyRequestReg: "Your already requested registration"
+ManagerRegAccepted: "Your request is accepted. When your request is approved you will recive notification"
+ManagerCreateError: "Something went wrong, manager was not created"
+AlreadyRegistered: "Your already active manager"

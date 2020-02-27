@@ -1,8 +1,10 @@
+const _ = require('lodash');
 const Manager = require('../models/manager');
 const eventsRules = require('./eventsRules');
+
 module.exports = {
   async messageTypeMiddleware(ctx, next) {
-    if (ctx.message && ctx.message.text) {
+    if (_.hasIn(ctx, 'message')) {
       if (ctx.message.text.startsWith('/')) {
         ctx.messageType = 'commands';
       } else {
@@ -47,7 +49,6 @@ module.exports = {
       await next();
       return null;
     }
-
-    ctx.reply('You don\'t have privileges for this command');
+    ctx.reply(ctx.i18n.t('NotPrevelegies'));
   }
 };

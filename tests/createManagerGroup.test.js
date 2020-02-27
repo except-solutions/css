@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const addManagerHelper = require('../app/helpers/addManagerHelper');
 const Manager = require('../app/models/manager');
-
+const i18n = require('../app/locales');
 
 describe('Test manager creation', () => {
 
@@ -19,7 +19,7 @@ describe('Test manager creation', () => {
       username: 'username'
     };
 
-    const createResult = await addManagerHelper.createMananger(managerMock);
+    const createResult = await addManagerHelper.createMananger(managerMock, i18n);
     const isManager = await Manager.exists({telegramId: managerMock.id});
 
     expect(createResult.success).toBe(true);

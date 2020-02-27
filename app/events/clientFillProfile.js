@@ -16,5 +16,5 @@ css.on('message', async (ctx, next) => {
     const msg = await clientFillProfileHelper(ctx);
     return ctx.reply(msg, startKeyboard(ctx));
   }
-  next();
+  await next();
 });

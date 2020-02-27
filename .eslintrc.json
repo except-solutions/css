@@ -26,5 +26,5 @@
         "no-var": "error",
         "indent": ["error", 2]
     },
-    "ignorePatterns": ["node_modules/", "mongo", "mongo_test", "init-mongo.js"]
+    "ignorePatterns": ["node_modules/", "mongo", "mongo_test", "init-mongo.js", "mongo_production"]
 }

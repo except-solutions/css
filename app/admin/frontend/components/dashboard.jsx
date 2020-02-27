@@ -11,14 +11,12 @@ class Dashboard extends React.Component {
     this.state = {clientsCount: 0};
     this.setClientsCount();
   }
-
   async setClientsCount() {
-    this.clientsCount = await getClientsCount();
+    const clientsCountResponse = await getClientsCount();
+    this.setState({clientsCount: clientsCountResponse.data});
   }
 
   render() {
-    const clientsCount = this.state.clientsCount;
-
     return (
       <div>
         <WrapperBox>
@@ -27,7 +25,7 @@ class Dashboard extends React.Component {
           </DashboardHeader>
           <Columns style={{marginTop: '-80px'}}>
             <Column className="is-offset-4">
-              <ValueBlock icon="fa fa-blind" value={clientsCount}>
+              <ValueBlock icon="fa fa-blind" value={this.state.clientsCount}>
                 Clients
               </ValueBlock>
             </Column>
