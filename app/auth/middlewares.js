@@ -5,7 +5,7 @@ const eventsRules = require('./eventsRules');
 module.exports = {
   async messageTypeMiddleware(ctx, next) {
     if (_.hasIn(ctx, 'message')) {
-      if (ctx.message.text.startsWith('/')) {
+      if (_.hasIn(ctx.message, 'text') && ctx.message.text.startsWith('/')) {
         ctx.messageType = 'commands';
       } else {
         ctx.messageType = 'regularMessage';

@@ -1,3 +1,5 @@
+const commonHelper = require('../helpers/commonHelper');
+
 const css = require('../../bot');
 const Group = require('../models/group');
 
@@ -15,10 +17,10 @@ css.on('message', async (ctx) => {
   }
 
   const managersGroup = await Group.getManagerGroup();
-  const replyText = `${ctx.i18n.t('MessagesFromUsername')}${ctx.message.from.username}`;
-  await ctx.telegram.sendMessage(managersGroup.chatId, replyText);
+  const replyText = `${ctx.i18n.t('MessagesFromUsername')} @${ctx.message.from.username}`;
+
   await ctx.telegram.sendCopy(
     managersGroup.chatId,
-    ctx.message,
+    commonHelper.addSignInMessage(ctx.message, replyText),
   );
 });
