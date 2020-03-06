@@ -6647,10 +6647,10 @@ telegraf-session-redis@^5.1.0:
     debug "^4.1.1"
     redis "^2.6.0-1"
 
-telegraf-sync@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/telegraf-sync/-/telegraf-sync-0.1.1.tgz#9a41433b9f4e7adc7cd4ac812987f4d4b9895a3c"
-  integrity sha512-i1+5szB4qbZW9L0TPBPwvcvJzM+MeAQirKZYGoKsPrQ8T/V8fvPpFAviCidv4tF7KXYEZcllLwNWzLIZF4AaFw==
+telegraf-sync@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/telegraf-sync/-/telegraf-sync-0.1.2.tgz#73dbcf582e2ecfb0ef933e787c58614596ab444d"
+  integrity sha512-nEfp2b4mZ0c6/O7A5DW4IlrHMCpE/yCnr9Iht1ZF+6LzqUcr87AaMp/ZQobhDm4D1yD7yifLOXl6xk4mCUvw3w==
   dependencies:
     debug "^4.0.1"
     minimist "^1.2.0"
