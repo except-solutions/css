@@ -1,10 +1,10 @@
-const Telegraf = require('telegraf'),
+const Telegraf = require('telegraf-sync'),
   cssbot = require('../bot'),
   i18n = require('../app/locales'),
   commandParts = require('telegraf-command-parts'),
-  authMiddlewares = require('../app/auth/middlewares');
+  authMiddlewares = require('../app/auth/middlewares'),
+  RedisSession = require('telegraf-session-redis');
 
-const RedisSession = require('telegraf-session-redis');
 const session = new RedisSession({
   store: {
     host: process.env.TELEGRAM_SESSION_HOST || '127.0.0.1',
@@ -16,7 +16,6 @@ const session = new RedisSession({
 cssbot.use(session);
 // Add middlewares:
 cssbot.use(i18n.middleware());
-// cssbot.use(session());
 cssbot.use(commandParts());
 cssbot.use(authMiddlewares.messageTypeMiddleware);
 cssbot.use(authMiddlewares.userAuthenticationMiddleware);
@@ -38,5 +37,4 @@ cssbot.catch((err, ctx) => {
 });
 
 // Bot launched:
-
-cssbot.launch();
+cssbot.launch({polling: {timeout: 1, stopCallback: () => console.log('long pools was stopped')}});
