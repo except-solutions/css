@@ -22,7 +22,7 @@ describe('Test client model creation on start event', () => {
 
     expect(client.telegramId).toBe(clientChatMock.id);
     expect(client.firstName).toBe(clientChatMock.first_name);
-    expect(client.lastName).toBe(client.last_name);
+    expect(client.lastName).toBe(clientChatMock.last_name);
     expect(client.username).toBe(clientChatMock.username);
   });
 
