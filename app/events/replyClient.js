@@ -38,7 +38,7 @@ css.hears(eventsRules.regularMessage.EndMessaging.value, async (ctx) => {
 
 css.on('message', async (ctx, next) => {
   if (ctx.session.dailogueWithCient && !eventsRules.isSpecialMessage(ctx.message)) {
-    const client = await Client.findOne({telegramId: ctx.message.from.id});
+    const client = await Client.findOne({telegramId: ctx.session.dailogueWithCient.chatId});
     ctx.from.fakeManager = client.fakeManager;
     await ctx.telegram.sendCopy(
       ctx.session.dailogueWithCient.chatId,

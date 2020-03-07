@@ -37,4 +37,6 @@ cssbot.catch((err, ctx) => {
 });
 
 // Bot launched:
-cssbot.launch({polling: {timeout: 1, stopCallback: () => console.log('long pools was stopped')}});
+cssbot.launch({
+  polling: {timeout: 1, stopCallback: () => console.log('long pools was stopped')}
+});

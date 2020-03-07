@@ -32,7 +32,7 @@ FailedFillProfile: 'Error! Perhaps you did not fill out one of the fields or fil
 CancelFillProfile: "Back ❌"
 
 MessagesFromUsername: 'Messages from: '
-MessageFromFakeManger: "Сообщение от менеджера: ${client.fakeManager}"
+MessageFromFakeManger: "Message by from manager: ${client.fakeManager}"
 EndMessaging: "End messaging with client ❌"
 StartMessagingWithClient: "Manager @${from.username} start messaging with client: "
 EndDialogNotice: "Manager @${from.username} end messaging with client: "
