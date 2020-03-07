@@ -49,3 +49,12 @@ services:
     volumes:
       - ../init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - ../mongo_production:/data/db
+
+  redis:
+    container_name: css_redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis_data:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
