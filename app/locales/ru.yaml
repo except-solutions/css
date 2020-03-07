@@ -32,8 +32,9 @@ FailedFillProfile: 'Ошибка! Возможно вы не заполнили 
 CancelFillProfile: "Назад ❌"
 
 MessagesFromUsername: "Сообщение от: "
+MessageFromFakeManger: "Ответ от ${from.fakeManager}. "
 EndMessaging: "Прекратить диалог ❌"
-StartMessagingWithClient: "Менеджер @${from.username} начала диалог с клиентом: "
+StartMessagingWithClient: "Менеджер @${from.username} начал диалог с клиентом: "
 EndDialogNotice: "Менеджер @${from.username} закончил диалог с клиентом: "
 NotPrevelegies: "У вас нет прав для выполнения данной комманды"
 AlreadyRequestReg: "Вы уже отправляли запрос на регистрацию, ожидайте подтверждения"

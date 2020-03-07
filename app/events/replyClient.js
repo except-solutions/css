@@ -5,6 +5,8 @@ const Client = require('../models/client');
 const replyHelper = require('../helpers/replyClientHelper');
 const clientDialogKeyboard = require('../keyboards/clientDialogKeyboard');
 const Keyboard = require('telegraf-keyboard');
+const commonHelper = require('../helpers/commonHelper');
+
 
 css.command(eventsRules.commands.replyClient.value, async ctx => {
 
@@ -36,7 +38,15 @@ css.hears(eventsRules.regularMessage.EndMessaging.value, async (ctx) => {
 
 css.on('message', async (ctx, next) => {
   if (ctx.session.dailogueWithCient && !eventsRules.isSpecialMessage(ctx.message)) {
-    await ctx.telegram.sendCopy(ctx.session.dailogueWithCient.chatId, ctx.message);
+    const client = await Client.findOne({telegramId: ctx.message.from.id});
+    ctx.from.fakeManager = client.fakeManager;
+    await ctx.telegram.sendCopy(
+      ctx.session.dailogueWithCient.chatId,
+      commonHelper.addSignInMessage(
+        ctx.message,
+        `${ctx.i18n.t('MessageFromFakeManger')}`
+      )
+    );
   }
   await next();
 });
