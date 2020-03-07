@@ -14,7 +14,7 @@ module.exports = {
     return await Client.create({
       telegramId: chat.id,
       firstName: chat.first_name,
-      latName: chat.last_name,
+      lastName: chat.last_name,
       username: chat.username
     });
   },

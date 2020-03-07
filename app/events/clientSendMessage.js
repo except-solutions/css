@@ -17,7 +17,7 @@ css.on('message', async (ctx) => {
   }
 
   const managersGroup = await Group.getManagerGroup();
-  const replyText = `${ctx.i18n.t('MessagesFromUsername')} @${ctx.message.from.username}`;
+  const replyText = `${ctx.i18n.t('MessagesFromUsername')} @${ctx.message.from.username}.`;
 
   await ctx.telegram.sendCopy(
     managersGroup.chatId,

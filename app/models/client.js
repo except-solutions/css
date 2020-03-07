@@ -16,6 +16,10 @@ module.exports = mongoose.model(
     ...{
       companyName: String,
       profile: profileSchema
+    },
+    fakeManager: {
+      type: String,
+      default: 'Анна'
     }
   })
 );

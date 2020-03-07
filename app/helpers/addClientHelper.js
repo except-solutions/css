@@ -13,7 +13,7 @@ module.exports = {
       {
         telegramId: clientData.id,
         firstName: clientData.first_name,
-        latName: clientData.last_name,
+        lastName: clientData.last_name,
         username: clientData.username
       }
     );

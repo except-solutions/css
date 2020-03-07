@@ -16,7 +16,7 @@ module.exports = {
       {
         telegramId: managerData.id,
         firstName: managerData.first_name,
-        latName: managerData.last_name,
+        lastName: managerData.last_name,
         username: managerData.username
       }
     );
