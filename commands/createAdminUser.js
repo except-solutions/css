@@ -1,9 +1,9 @@
 require('dotenv').config();
 
-const adminUser = require('../app/models/adminUser');
+const AdminUser = require('../app/models/adminUser');
 const command = require('commander');
-const passwordHash = require('password-hash');
-const adminUserTypes = require('../app/constants').adminUserLevels;
+const adminUserLevels = require('../app/constants').adminUserLevels;
+const createAdminUser = require('../app/admin/helpers/adminUserHelpers').createAdminUser;
 
 command.option('-e, --email <value>', 'Add user email option -e email@example.com')
   .option('-p, --password <value>', 'Add user password -p qwertyq')
@@ -13,24 +13,19 @@ command.parse(process.argv);
 
 let level;
 
-if (!Object.keys(adminUserTypes).includes(command.level)) {
+if (!Object.keys(adminUserLevels).includes(command.level)) {
   throw Error(`Unknown admin user type ${command.level}`);
 } else {
-  level = adminUserTypes[command.level];
+  level = adminUserLevels[command.level];
 }
 
-adminUser.create(
-  {
-    email: command.email,
-    hash: passwordHash.generate(command.password),
-    level: level
-  },
-  (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log('Admin user success created');
-    }
-    adminUser.db.base.connections.map(c => c.close());
-  }
-);
+(async () => {
+  await createAdminUser(
+    command.email,
+    command.password,
+    level,
+    () => console.log('user success created'),
+    (e) => console.log(e)
+  );
+  await AdminUser.db.base.connections.map(c => c.close());
+})();
