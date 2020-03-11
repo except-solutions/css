@@ -3,7 +3,9 @@ const AdminBro = require('admin-bro');
 const AdminBroExpress = require('admin-bro-expressjs');
 const AdminBroMongoose = require('admin-bro-mongoose');
 const Group = require('../models/group');
+const AdminUser = require('../models/adminUser');
 const ClientResource = require('./resources/client');
+const loginAuth = require('./auth');
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
@@ -19,6 +21,9 @@ const adminBro = new AdminBro({
     },
     {
       resource: Group
+    },
+    {
+      resource: AdminUser
     }
   ],
   dashboard: {
@@ -26,4 +31,10 @@ const adminBro = new AdminBro({
   },
 });
 
-module.exports = AdminBroExpress.buildRouter(adminBro);
+const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
+  authenticate: loginAuth,
+  cookieName: 'adminbro',
+  cookiePassword: 'somepassword',
+});
+
+module.exports = router;
