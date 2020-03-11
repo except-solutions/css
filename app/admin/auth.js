@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const passwordHash = require('password-hash');
 const AdminUser = require('../models/adminUser');
 
@@ -11,9 +12,8 @@ const loginAuth = async (email, password) => {
    */
   let user;
 
-  try {
-    user = await AdminUser.findOne({email: email});
-  } catch (e) {
+  user = await AdminUser.findOne({email: email});
+  if (_.isNull(user)) {
     return false;
   }
 
