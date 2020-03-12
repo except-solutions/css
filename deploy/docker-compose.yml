@@ -33,8 +33,10 @@ services:
       - MONGO_SCHEMA=mongocss
     links:
       - mongo
+      - redis
     depends_on:
       - mongo
+      - redis
     volumes:
     - ../:/app
   mongo:

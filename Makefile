@@ -6,4 +6,3 @@ run-test-db:
 
 create-admin-user:
 	node commands/createAdminUser.js --email $(EMAIL) --password $(PASSWORD) --level $(LEVEL)
-
